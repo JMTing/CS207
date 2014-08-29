@@ -1,0 +1,16 @@
+----------------------
+Jason Ting
+CS 207 Final Project
+----------------------
+
+-----------------------------
+Ellie and Daniel
+Prompt 1 – Meshed Mass Spring
+-----------------------------
+I utilized their implementation of wind, gravitational, and mass forces and combining these forces on to a ball mesh. I also used their plane contraint and on the mesh alongside their suggested constants. Overall, their code is well documented and easy to use and understand. I had to make some modifications in the force structs so that I was able to use it in the mesh I implemented instead of their mesh class. I initially had trouble using their wind force as it deformed my ball, but they both helped me figure out that my mass_spring_force was not initialized correctly. The wind force didn't affect simulation as well as I intended, even after modifying their constants, but I believe that's because of the constants I set up so that the ball can create notiable ripples on the shallow water. I modified their plane constraint to do something different than what they had originally. Besides the minor problem with making the wind force work on my simulation, everything went correctly and smoothly. 
+
+--------------------------------
+Xinyi and Philip 
+Prompt 5 – Visualizer Extensions
+--------------------------------
+I utilized their listener so that my simulation stops when the user right clicks. I also implemented color on the mesh so that I can use their triangle shader. Their README.txt included an example that made it extremely easy to implement for my own code. Overall, their code is very intuitive to use and well documented. The listener object works as intended. The triangle shader works as intended, but slows down my simulation too significantly, so I removed it in my code. The code looks like it works and is optimized, so I believe the size of my mesh makes this feature unusable. Overall good. 

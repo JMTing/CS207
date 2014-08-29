@@ -1,0 +1,6 @@
+----------------------
+Jason Ting
+CS 207 Final Project
+----------------------
+
+I worked by myself for this project, so I implemented all the featurefor this project. Other groups contributed their homework extentions to me, outlined in the COLLLAB_EVAL.txt. Xinyi and Philip put their code in a git repository and worked seamlessly. Ellie and Daniel emailed me their code, and they were extemely helpful in figuring out the bug I was encountering. 
