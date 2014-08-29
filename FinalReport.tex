@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Progress Report
+% Jason Ting
+% Final Report for CS207
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------
+%	Packages and other documentations
+%-------------------------------------------------------------
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+% Specifies the directory where pictures are stored
+\graphicspath{{./Figures/}} 
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{\textbf{CS207 Final Project Report}}
+\author{Jason Ting}
+\date{}
+
+
+\begin{document}
+\maketitle{}
+
+%-------------------------------------------------------------
+%	Section 0
+%-------------------------------------------------------------
+
+\section*{Project Description}
+This project simulates a ball falling into the shallow water and the rippling effects on the shallow water after the ball enters the water. Right clicking the screen visualization pauses the simulation, and clicking again unpauses it. Other forces act on the ball during the drop and including bathymetry to the shallow water model moves the water. 
+
+%-------------------------------------------------------------
+%	Section 1
+%-------------------------------------------------------------
+
+\section*{Breakdown}
+\subsection*{Shallow Water Extensions}
+\begin{itemize}
+\item Modify the shallow water flux equation with the following replacement:
+\begin{equation}
+\frac{1}{2}gh \to \frac{1}{2}gh + \frac{Fh}{\rho A}
+\end{equation}
+This replacement was implemented in the EdgeFluxCalculator struct. The additional term is defined in the hyperbolic struct. A struct containing the new variables is included to store relevent data and default structs initializing the new terms is implemented for others to potentially use and modify. For this project, a ball's position and the amount water is submerged is calculated in the hyperbolic step to determine the new term on the shallow water model. The force remains constant because there is only gravitational force and the area is calculated at each time step. 
+\item Including Bathymetry into the shallow water model. The b(x) term describes the height of the floor from the bottom of the tub. This data is stored in the TriData struct and initialized through the example structs. The bathymetry changes the step equation to the following:
+\begin{equation}
+Q^{n+1} = \frac{\delta t}{|T_k|}S + Q^n - \frac{\delta t}{|T_k|}\Sigma F_k
+\end{equation}
+This equation is calculated in the hyperbolic step, and the source is then updated in the hyperbolic step.
+\item Implemented color to the shallow water and ball to better visualize the waves and the distinguish the two meshes. The submerged part of the ball changes color to teal as it falls. 
+\end{itemize}
+
+\newpage
+
+%-------------------------------------------------------------
+%	Section 2
+%-------------------------------------------------------------
+
+\subsection*{Meshed Mass Spring}
+Implemented by another group, this project utilized and combined the forces defined by the prompt on to the ball mesh. A new buoyant force is defined for this project that determines the buoyant force on the ball based on the volume submerged in the shallow water and the density. For this project, gravitational, buoyant, wind, and mass spring forces acts on the ball. Although wind force is implemented, it is not significant in the simulation due to the constants and the low time frame. A plane constraint was used and modified so that the ball stops moving at a certain depth when completely submerged. 
+
+%-------------------------------------------------------------
+%	Section 3
+%-------------------------------------------------------------
+
+\subsection*{Visualizer Extension}
+Implemented by another group, this project created interactivity by right clicking and pausing the simulation, and right clicking again to unpause it. Triangles are also shaded, but because this feature slowed down the simulation significantly, this feature is commented out in the code. 
+
+\end{document}
